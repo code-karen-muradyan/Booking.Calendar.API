@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Booking.Calendar.API.Infrastructure.Migrations.Base
 {
     [DbContext(typeof(CalendarContext))]
-    [Migration("20180824201712_Initial")]
+    [Migration("20180901182641_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,8 @@ namespace Booking.Calendar.API.Infrastructure.Migrations.Base
                         .IsRequired();
 
                     b.Property<string>("Description");
+
+                    b.Property<DateTime>("EndDate");
 
                     b.Property<string>("From")
                         .IsRequired();

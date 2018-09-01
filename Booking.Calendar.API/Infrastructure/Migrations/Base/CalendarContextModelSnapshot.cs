@@ -49,6 +49,8 @@ namespace Booking.Calendar.API.Infrastructure.Migrations.Base
 
                     b.Property<string>("Description");
 
+                    b.Property<DateTime>("EndDate");
+
                     b.Property<string>("From")
                         .IsRequired();
 

@@ -9,6 +9,7 @@ namespace Booking.Calendar.API.Models.Dto
     {
         public int Id { get; set; }
         public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public string Categoria { get; set; }        
         public string ClassEvent { get; set; }
         public string Title { get; set; }

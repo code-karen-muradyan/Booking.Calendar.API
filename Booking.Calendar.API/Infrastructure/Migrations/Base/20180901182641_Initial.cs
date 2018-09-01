@@ -17,6 +17,7 @@ namespace Booking.Calendar.API.Infrastructure.Migrations.Base
                 {
                     Id = table.Column<int>(nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false),
+                    EndDate = table.Column<DateTime>(nullable: false),
                     Categoria = table.Column<string>(nullable: true),
                     ClassEvent = table.Column<string>(nullable: false),
                     Title = table.Column<string>(nullable: false),

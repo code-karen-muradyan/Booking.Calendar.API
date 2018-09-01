@@ -28,7 +28,8 @@ namespace Booking.Calendar.API.Application.Commands
                 Title = request.Title,
                 From = request.From,
                 To = request.To,
-                StartDate = request.StartDate
+                StartDate = request.StartDate,
+                EndDate= request.EndDate
             });
         }
     }
