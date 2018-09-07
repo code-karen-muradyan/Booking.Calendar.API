@@ -16,6 +16,7 @@ namespace Booking.Calendar.API.Infrastructure
 
         private readonly IMediator _mediator;
         public DbSet<Apponintment> Apponintments { get; set; }
+        public DbSet<IDSpecification> IDSpecifications { get; set; }
         public CalendarContext(DbContextOptions<CalendarContext> options) : base(options)
         {
         }

@@ -57,7 +57,6 @@ namespace Booking.Calendar.API.Application.Queries
             {
                 Id = result[0].Id,
                 StartDate = result[0].StartDate,
-                EndDate = result[0].EndDate,
                 Categoria = result[0].Categoria,
                 ClassEvent = result[0].ClassEvent,
                 Description = result[0].Description,

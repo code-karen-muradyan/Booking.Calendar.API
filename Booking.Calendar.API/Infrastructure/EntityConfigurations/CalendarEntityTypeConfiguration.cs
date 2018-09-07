@@ -14,14 +14,17 @@ namespace Booking.Calendar.API.Infrastructure.EntityConfigurations
         {
             calendarConfiguration.ToTable("apponintment");
 
-            calendarConfiguration.HasKey(o => o.Id);
-
+            calendarConfiguration.HasKey(o => o.Id); 
             calendarConfiguration.Property(o => o.Id)
                 .ForSqlServerUseSequenceHiLo("appointmentseq");
+         
+            calendarConfiguration.HasOne<IDSpecification>(x => x.SpecifiedID)
+                                 .WithOne(x => x.Apponintment)
+                                 .HasForeignKey<IDSpecification>(x => x.AppointmentId);
 
             calendarConfiguration.Property<DateTime>("StartDate").IsRequired();
-            calendarConfiguration.Property<string>("From").IsRequired();
-            calendarConfiguration.Property<string>("To").IsRequired();
+            calendarConfiguration.Property<string>("From").IsRequired();   
+            calendarConfiguration.Property<string>("To").IsRequired(); 
             calendarConfiguration.Property<string>("Categoria").IsRequired(false);
             calendarConfiguration.Property<string>("ClassEvent").IsRequired();
             calendarConfiguration.Property<string>("Title").IsRequired();

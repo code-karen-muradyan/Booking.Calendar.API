@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Booking.Calendar.API.Application.Behaviors;
+using Booking.Calendar.API.Application.Commands;
 using Booking.Calendar.API.Application.Validations;
 using Booking.Calendar.API.Models.Write;
 using FluentValidation;
@@ -22,12 +23,19 @@ namespace Booking.Calendar.API.Infrastructure.AutofacModules
             // Register all the Command classes (they implement IRequestHandler) in assembly holding the Commands
             builder.RegisterAssemblyTypes(typeof(CreateAppointmentCommand).GetTypeInfo().Assembly)
                 .AsClosedTypesOf(typeof(IRequestHandler<,>));
+            builder.RegisterAssemblyTypes(typeof(UpdateAppointmentCommand).GetTypeInfo().Assembly)
+               .AsClosedTypesOf(typeof(IRequestHandler<,>));
 
             // Register the Command's Validators (Validators based on FluentValidation library)
             builder
                 .RegisterAssemblyTypes(typeof(CreateAppointmentCommandValidator).GetTypeInfo().Assembly)
                 .Where(t => t.IsClosedTypeOf(typeof(IValidator<>)))
                 .AsImplementedInterfaces();
+
+            builder
+               .RegisterAssemblyTypes(typeof(UpdateAppointmentCommandValidator).GetTypeInfo().Assembly)
+               .Where(t => t.IsClosedTypeOf(typeof(IValidator<>)))
+               .AsImplementedInterfaces();
 
 
             builder.Register<ServiceFactory>(context =>

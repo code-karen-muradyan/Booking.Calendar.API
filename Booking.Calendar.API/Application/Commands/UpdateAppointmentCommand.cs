@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Booking.Calendar.API.Models.Write
+namespace Booking.Calendar.API.Application.Commands
 {
-    public class CreateAppointmentCommand: IRequest<bool>
+    public class UpdateAppointmentCommand : IRequest<bool>
     {
+        public int Id { get; set; }
         public DateTime StartDate { get; set; }
         public string Categoria { get; set; }
         public string ClassEvent { get; set; }

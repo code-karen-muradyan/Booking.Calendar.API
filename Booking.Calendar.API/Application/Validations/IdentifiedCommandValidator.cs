@@ -15,4 +15,20 @@ namespace Booking.Calendar.API.Application.Validations
             RuleFor(command => command.Id).NotEmpty();
         }
     }
+
+    public class IdentifiedUpdateCommandValidator : AbstractValidator<IdentifiedCommand<UpdateAppointmentCommand, bool>>
+    {
+        public IdentifiedUpdateCommandValidator()
+        {
+            RuleFor(command => command.Id).NotEmpty();
+        }
+    }
+
+    public class IdentifiedRemoveCommandValidator : AbstractValidator<IdentifiedCommand<RemoveAppointmentCommand, bool>>
+    {
+        public IdentifiedRemoveCommandValidator()
+        {
+            RuleFor(command => command.Id).NotEmpty();
+        }
+    }
 }
