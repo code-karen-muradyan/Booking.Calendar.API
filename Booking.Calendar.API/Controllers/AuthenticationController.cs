@@ -45,7 +45,7 @@ namespace Booking.Calendar.API.Controllers
         [Route("[action]")]
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Created)]
-        public async Task<IActionResult> RegisterUser([FromBody] Register model)
+        public async Task<IActionResult> RegisterUser([FromBody]  Register model)
         {
             _logger.LogInformation("Register, applay register");
             if (ModelState.IsValid)

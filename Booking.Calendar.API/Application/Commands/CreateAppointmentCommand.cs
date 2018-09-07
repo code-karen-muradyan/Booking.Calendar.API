@@ -8,8 +8,9 @@ namespace Booking.Calendar.API.Models.Write
 {
     public class CreateAppointmentCommand: IRequest<bool>
     {
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public string Date { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
         public string Categoria { get; set; }
         public string ClassEvent { get; set; }
         public string Title { get; set; }

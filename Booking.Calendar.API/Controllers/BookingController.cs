@@ -7,6 +7,7 @@ using Booking.Calendar.API.Application.Commands;
 using Booking.Calendar.API.Application.Queries;
 using Booking.Calendar.API.Infrastructure.Repositories;
 using Booking.Calendar.API.Models.Dto;
+using Booking.Calendar.API.Models.Read;
 using Booking.Calendar.API.Models.Write;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -63,7 +64,13 @@ namespace Booking.Calendar.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<IActionResult> Post([FromBody] CreateAppointmentCommand command, [FromHeader(Name = "x-requestid")] string requestId)
         {
-            return Ok();
+            bool commandResult = false;
+            if (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty)
+            {
+                var requestCancelOrder = new IdentifiedCommand<CreateAppointmentCommand, bool>(command, guid);
+                commandResult = await _mediator.Send(requestCancelOrder);
+            }
+            return Ok(commandResult);
         }
 
         /// <summary>
@@ -85,6 +92,25 @@ namespace Booking.Calendar.API.Controllers
             return Ok(commandResult);
         }
 
-       
+
+        /// <summary>
+        /// This method update appointment data, local and for google calendar 
+        /// </summary>
+        /// <param name="value"></param>
+        [Route("rooms")]
+        [HttpGet]
+        [ProducesResponseType(typeof(Room),(int)HttpStatusCode.OK)]
+        public async Task<IActionResult> GetRooms()
+        {
+            var rooms = new List<Room> {
+                new Room{ Name = "Room1" },
+                new Room { Name = "Room2" },
+                new Room { Name = "Room3" },
+                new Room { Name = "Room4" }
+            };
+            return Ok(rooms);
+        }
+
+
     }
 }

@@ -17,12 +17,12 @@ namespace Booking.Calendar.API.Application.Validations
             RuleFor(command => command.From).NotEmpty();
             RuleFor(command => command.To).NotEmpty();
             RuleFor(command => command.Title).NotEmpty();
-            RuleFor(command => command.StartDate).NotEmpty().Must(BeValidStartDate).WithMessage("Please specify a valid book start date"); 
+            RuleFor(command => command.Date).NotEmpty().Must(BeValidStartDate).WithMessage("Please specify a valid book start date"); 
         }
 
-        private bool BeValidStartDate(DateTime dateTime)
+        private bool BeValidStartDate(string dateTime)
         {
-            return dateTime >= DateTime.UtcNow;
+            return DateTime.Parse(dateTime) >= DateTime.UtcNow;
         }
 
       

@@ -18,7 +18,6 @@
   <ItemGroup>
     <Folder Include="Infrastructure\Idempotency\" />
     <Folder Include="Infrastructure\Migrations\Base\" />
-    <Folder Include="Models\Read\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
